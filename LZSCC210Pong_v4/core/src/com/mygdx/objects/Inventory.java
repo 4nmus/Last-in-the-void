@@ -12,6 +12,10 @@ public class Inventory {
         this.maxSize = maxSize;
     }
 
+    public Map<String, Integer> getItems() {
+        return items;
+    }
+
     // Add items
     public boolean addItem(String item) {
         if (items.size() >= maxSize) {

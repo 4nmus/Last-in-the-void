@@ -4,13 +4,14 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.mygdx.UI.InventoryUI;
 import com.mygdx.helpers.FancyFontHelper;
 import com.mygdx.helpers.ScreenType;
+import com.mygdx.objects.Player;
 import com.mygdx.screens.EndGameScreen;
 import com.mygdx.screens.GameScreen;
 import com.mygdx.screens.InfoScreen;
 import com.mygdx.screens.MenuScreen;
-import com.mygdx.screens.InventoryScreen;
 
 
 /**
@@ -27,8 +28,18 @@ public class PongGame extends Game {
 	
 	private OrthographicCamera ortographicCamera;
 	
+	private Player player;
+
 	private PongGame() {
 		INSTANCE = this;
+	}
+
+	public Player getPlayer() {
+		return player;
+	}
+
+	public void setPlayer(Player player) {
+		this.player = player;
 	}
 	
 	public static PongGame getInstance() {
@@ -73,18 +84,18 @@ public class PongGame extends Game {
 			setScreen(new MenuScreen());
 		if(newScreenType == ScreenType.INFO)
 			setScreen(new InfoScreen());
-
-		if(newScreenType == ScreenType.INVENTORY)
-			setScreen(new InventoryScreen(this));
-	}
 	
-	public void changeScreen(Screen currentScreen, ScreenType newScreenType, String message) {
-		
-		if(newScreenType == ScreenType.END_GAME){
-			setScreen(new EndGameScreen(message));
+		if(newScreenType == ScreenType.INVENTORY) {
+			// Use the stored player instead of null
+			if (player != null) {
+				setScreen(new InventoryUI(this, player));
+			} else {
+				setScreen(new InventoryUI(this, null));
+			}
 		}
 	}
 	
+
 	// Exit the game
 	public void exit(Screen screen) {
 		FancyFontHelper.getInstance().dispose();
@@ -92,5 +103,4 @@ public class PongGame extends Game {
 		Gdx.app.exit();
 	}
 	
-
 }

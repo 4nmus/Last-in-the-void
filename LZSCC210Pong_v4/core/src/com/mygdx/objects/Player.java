@@ -12,6 +12,7 @@ import com.mygdx.helpers.Constants;
 
 public class Player{
     private String name;
+    private Player player;
     private double health = 100;
 	private double fuel = 100;
     private double oxygen = 100;
@@ -95,6 +96,13 @@ public class Player{
 
 
     // Interaction with Inventory
+    public Inventory getInventory() {
+        if (inventory == null) {
+            inventory = new Inventory(50);
+        }
+        return inventory;
+    }
+
     public void addItemToInventory(String item) {
         inventory.addItem(item);
     }
