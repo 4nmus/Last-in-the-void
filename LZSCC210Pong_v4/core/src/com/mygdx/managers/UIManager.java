@@ -191,7 +191,7 @@ public class UIManager {
                     closeUpgrades();
     
                     upgradesUI.setVisible(scannerOpen);
-                    Gdx.input.setInputProcessor(scannerOpen ? upgradesStage : uiStage);
+                    Gdx.input.setInputProcessor(scannerOpen ? scannerStage : uiStage);
                 }
             }
         });
