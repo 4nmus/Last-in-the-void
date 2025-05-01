@@ -172,7 +172,6 @@ public class UIManager {
             }
         });
     
-    
         Table upgradesTable = new Table();
         upgradesTable.setFillParent(true);
         upgradesTable.bottom().left().pad(10).padLeft(150); // Shift a bit right of inventory
@@ -180,6 +179,7 @@ public class UIManager {
     
         uiStage.addActor(upgradesTable);
     }
+
     private void createScannerButton() {
         TextButton scannerButton = new TextButton(" Next System", skin);
         scannerButton.addListener(new ChangeListener() {
@@ -191,14 +191,14 @@ public class UIManager {
                     closeUpgrades();
     
                     upgradesUI.setVisible(scannerOpen);
-                    Gdx.input.setInputProcessor(scannerOpen ? scannerStage : uiStage);
-
+                    Gdx.input.setInputProcessor(scannerOpen ? upgradesStage : uiStage);
                 }
             }
         });
+
         Table scannerTable = new Table();
         scannerTable.setFillParent(true);
-        scannerTable.bottom().left().pad(10).padLeft(300);
+        scannerTable.bottom().left().pad(10).padLeft(290);
         scannerTable.add(scannerButton).width(120).height(50);
         
         uiStage.addActor(scannerTable);

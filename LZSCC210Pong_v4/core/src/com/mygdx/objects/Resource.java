@@ -71,4 +71,3 @@ public class Resource extends InteractiveObject {
         return name + " (" + type + ") - Amount: " + amount;
     }
 }
-

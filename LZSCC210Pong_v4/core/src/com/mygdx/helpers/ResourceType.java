@@ -19,4 +19,3 @@ public class ResourceType {
     public static final String RARE_ORGANIC = "Alien Plant";
     public static final String SUPERIOR_ORGANIC = "Alien Flesh";
 }
-
